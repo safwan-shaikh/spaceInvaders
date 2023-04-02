@@ -5,12 +5,13 @@ import BulletController from "./BulletController.js";
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 600;
-canvas.height = 600;
+canvas.width = 525;
+canvas.height = 525;
 
 const background = new Image();
 background.src = "images/space.png";
 
+let gameOver = false;
 const playerBulletController = new BulletController(canvas, 10, "red", true);
 const enemyBulletController = new BulletController(canvas, 4, "white", false);
 const enemyController = new EnemyController(
@@ -18,6 +19,9 @@ const enemyController = new EnemyController(
   enemyBulletController,
   playerBulletController
 );
+document.getElementById("restart-button").addEventListener("click", () => {
+  location.reload();
+});
 const player = new Player(canvas, 3, playerBulletController);
 
 let isGameOver = false;
